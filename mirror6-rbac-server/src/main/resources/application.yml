@@ -1,0 +1,6 @@
+
+spring:
+  application:
+    name: mirror6-rbac-server
+  profiles:
+    active: dev
