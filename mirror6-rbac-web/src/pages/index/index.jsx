@@ -8,6 +8,7 @@ import Home from '../home/home'
 import User from '../system/user/user'
 import Role from '../system/role/role'
 import Menu from '../system/menu/menu'
+import PrivateRoute from '../../config/privateRoute'
 
 
 const { Footer, Sider, Content } = Layout;
@@ -29,7 +30,7 @@ class index extends Component {
                         <Switch>
                             <Route path="/home" component={Home}></Route>
                             <Route path="/system/user" component={User}></Route>
-                            <Route path="/system/role" component={Role}></Route>
+                            <PrivateRoute path="/system/role" component={Role}></PrivateRoute>
                             <Route path="/system/menu" component={Menu}></Route>
                             <Redirect to='/home'></Redirect>
                         </Switch>

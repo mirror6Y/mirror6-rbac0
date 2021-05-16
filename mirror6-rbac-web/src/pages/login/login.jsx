@@ -19,11 +19,13 @@ class login extends Component {
 
         const result = await reqLogin(values);
         if (result.code === 200) {
-            console.log(JSON.stringify(result.data))
+           
             message.success("登录成功");
-            // const user = result.data;
+            const user = result.data;
             // memoryUtil.user = user;
-            // storageUtil.setUser(user);
+            storageUtil.setUser(user);
+            let user1=storageUtil.getUser();
+            console.log("登录后user:"+user1)
             this.props.history.replace('/');
         } else {
             message.error("登录失败");
