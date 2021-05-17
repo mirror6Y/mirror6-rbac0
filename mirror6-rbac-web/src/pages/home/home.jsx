@@ -5,7 +5,7 @@ class Home extends Component {
     render() {
         return (
             <div className="home">
-                欢迎使用智慧校园后台管理系统
+                欢迎使用Mirror6-rbac
             </div>
         );
     }

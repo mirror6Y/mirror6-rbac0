@@ -18,7 +18,7 @@ const menuList = [
     },
     {
         title: "系统信息",
-        key: "system",
+        key: "/system",
         icon: <SettingOutlined />,
         children: [
             {

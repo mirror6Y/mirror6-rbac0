@@ -1,6 +1,9 @@
 package cn.mirror6.rbac.server.component;
 
+import cn.mirror6.rbac.center.pojo.login.LoginRequire;
 import cn.mirror6.rbac.server.security.LoginUser;
+import cn.mirror6.rbac.server.util.JwtTokenUtil;
+import cn.mirror6.rbac.util.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,14 +25,19 @@ public class SystemLoginService {
     @Resource
     private AuthenticationManager authenticationManager;
 
+    @Resource
+    private RedisUtil redisUtil;
 
-    public String login(String username, String password, String code, String uuid) {
+
+    public String login(LoginRequire loginRequire) {
+        //验证码
+
         // 用户验证
         Authentication authentication = null;
         try {
             // 该方法会去调用UserDetailsServiceImpl.loadUserByUsername
             authentication = authenticationManager
-                    .authenticate(new UsernamePasswordAuthenticationToken(username, password));
+                    .authenticate(new UsernamePasswordAuthenticationToken(loginRequire.getUsername(), loginRequire.getPassword()));
         } catch (Exception e) {
             if (e instanceof BadCredentialsException) {
                 log.info("user.password.not.match");
@@ -42,6 +50,8 @@ public class SystemLoginService {
         log.info("user.login.success");
         assert authentication != null;
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
-        return loginUser.toString();
+        String token = JwtTokenUtil.createToken(loginUser, loginRequire.getRemember());
+        redisUtil.set("user_token_" + loginUser.getUser().getId(), token);
+        return token;
     }
 }

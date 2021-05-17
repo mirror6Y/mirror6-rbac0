@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import jwt_decode from 'jwt-decode'
+
 // import { Redirect } from 'react-router-dom'
 import { Form, Input, Button, Checkbox, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
@@ -21,11 +23,12 @@ class login extends Component {
         if (result.code === 200) {
            
             message.success("登录成功");
-            const user = result.data;
+            const userResult = result.data;
+            let user=jwt_decode(userResult);
             // memoryUtil.user = user;
             storageUtil.setUser(user);
             let user1=storageUtil.getUser();
-            console.log("登录后user:"+user1)
+            console.log("登录后user:"+JSON.stringify(user1))
             this.props.history.replace('/');
         } else {
             message.error("登录失败");
@@ -47,8 +50,7 @@ class login extends Component {
         return (
             <div className="login">
                 <header className="login-header">
-                    <h1>CityMis</h1>
-                    <img src={logo} alt="logo"></img>
+                    <h1>Mirror6-rbac</h1>
                 </header>
                 <section className="login-content">
                     <h2>用户登录</h2>

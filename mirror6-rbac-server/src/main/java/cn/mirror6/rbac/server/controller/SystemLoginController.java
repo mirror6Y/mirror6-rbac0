@@ -1,6 +1,6 @@
 package cn.mirror6.rbac.server.controller;
 
-import cn.mirror6.rbac.center.pojo.login.LoginBody;
+import cn.mirror6.rbac.center.pojo.login.LoginRequire;
 import cn.mirror6.rbac.response.ResponseFactory;
 import cn.mirror6.rbac.response.Result;
 import cn.mirror6.rbac.server.component.SystemLoginService;
@@ -25,13 +25,12 @@ public class SystemLoginController {
     /**
      * 登录方法
      *
-     * @param loginBody 登录信息
+     * @param loginRequire 登录信息
      * @return 结果
      */
     @PostMapping
-    public Result login(@RequestBody LoginBody loginBody) {
-        String login = loginServer.login(loginBody.getUsername(), loginBody.getPassword(), loginBody.getCode(),
-                loginBody.getUuid());
+    public Result login(@RequestBody LoginRequire loginRequire) {
+        String login = loginServer.login(loginRequire);
         return ResponseFactory.build(login);
     }
 }

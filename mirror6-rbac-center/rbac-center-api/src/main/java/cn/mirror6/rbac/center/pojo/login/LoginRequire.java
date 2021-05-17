@@ -3,12 +3,12 @@ package cn.mirror6.rbac.center.pojo.login;
 import lombok.Data;
 
 /**
- * @description:
+ * @description: 登录信息对象
  * @author: mirror6
  * @create: 2021-04-24 15:02
  **/
 @Data
-public class LoginBody {
+public class LoginRequire {
 
     /**
      * 用户名
@@ -24,6 +24,11 @@ public class LoginBody {
      * 验证码
      */
     private String code;
+
+    /**
+     * 记住我
+     */
+    private Boolean remember;
 
     /**
      * 唯一标识
