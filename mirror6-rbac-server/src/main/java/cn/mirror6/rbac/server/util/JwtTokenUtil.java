@@ -38,7 +38,7 @@ public class JwtTokenUtil {
                 .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
                 .claim(SecurityConstant.ROLE_CLAIMS, String.join(",", user.getAuthList()))
                 .setId(user.getUser().getId().toString())
-                .setIssuer("SnailClimb")
+                .setIssuer("mirror6")
                 .setIssuedAt(createdDate)
                 .setSubject(user.getUsername())
                 .setExpiration(expirationDate)
