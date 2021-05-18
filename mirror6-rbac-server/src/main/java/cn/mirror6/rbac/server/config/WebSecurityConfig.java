@@ -1,5 +1,7 @@
 package cn.mirror6.rbac.server.config;
 
+import cn.mirror6.rbac.server.security.filter.JwtAuthorizationFilter;
+import cn.mirror6.rbac.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +22,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private RedisUtil redisUtil;
 
     @Autowired
     @Qualifier("userDetailsServiceImpl")
@@ -50,7 +53,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js"
                 ).permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+                .and()
+                //自定义filter
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), redisUtil));
 //        // 定制请求的授权规则
 //        http.authorizeRequests()
 //                // 匹配许可，首页所有人可以访问

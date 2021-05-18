@@ -51,7 +51,8 @@ public class SystemLoginService {
         assert authentication != null;
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
         String token = JwtTokenUtil.createToken(loginUser, loginRequire.getRemember());
-        redisUtil.set("user_token_" + loginUser.getUser().getId(), token);
+        boolean set = redisUtil.set("user_token_" + loginUser.getUser().getId(), token);
+        System.out.println(set);
         return token;
     }
 }

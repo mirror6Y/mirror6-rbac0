@@ -30,7 +30,7 @@ class PrivateRoute extends Component {
         const { component: Component, ...rest } = this.props;
         const rol = storageUtil.getUser().rol;
         const path=""+this.props.path;
-        const res=rol.indexOf(path);
+        const res=path.indexOf(path);
         console.log("rol:"+JSON.stringify( rol))
         console.log("菜单url:"+path)
         console.log("res:"+res)
