@@ -23,10 +23,11 @@ class login extends Component {
         if (result.code === 200) {
            
             message.success("登录成功");
-            const userResult = result.data;
-            let user=jwt_decode(userResult);
+            const userToken = result.data;
+            let user=jwt_decode(userToken);
             // memoryUtil.user = user;
             storageUtil.setUser(user);
+            storageUtil.setToken(userToken);
             let user1=storageUtil.getUser();
             console.log("登录后user:"+JSON.stringify(user1))
             this.props.history.replace('/');

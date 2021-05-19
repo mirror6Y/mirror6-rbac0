@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { message } from 'antd';
+import storageUtil from '../utils/storageUtil'
+
 export default function ajax(url, data, type) {
     let promise;
 
@@ -9,28 +11,28 @@ export default function ajax(url, data, type) {
                 method: 'get',
                 url: url,
                 data: data,
-                headers: { 'authorization': localStorage.getItem('token') }
+                headers: { 'authorization': storageUtil.getToken('token') }
             })
         } else if (type === "POST") {
             promise = axios({
                 method: 'post',
                 url: url,
                 data: data,
-                headers: { 'authorization': localStorage.getItem('token') }
+                headers: { 'authorization': storageUtil.getToken('token') }
             })
         } else if (type === "DELETE") {
             promise = axios({
                 method: 'delete',
                 url: url,
                 data: data,
-                headers: { 'authorization': localStorage.getItem('token') }
+                headers: { 'authorization': storageUtil.getToken('token') }
             })
         } else if (type === "PUT") {
             promise = axios({
                 method: 'put',
                 url: url,
                 data: data,
-                headers: { 'authorization': localStorage.getItem('token') }
+                headers: { 'authorization': storageUtil.getToken('token') }
             })
         }
 

@@ -2,6 +2,7 @@
  * 
  */
 const USER_KEY = 'user';
+const Token='token';
 
 export default {
     setUser(user) {
@@ -14,5 +15,19 @@ export default {
 
     removeUser() {
         localStorage.removeItem(USER_KEY);
-    }
+    },
+
+    //token
+    setToken(token){
+           localStorage.setItem(Token, token);
+    },
+
+    getToken() {
+            return localStorage.getItem(Token);
+    },
+
+    removeToken() {
+            localStorage.removeItem(Token);
+    },
+
 }
