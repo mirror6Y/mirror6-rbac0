@@ -10,7 +10,7 @@ export default function ajax(url, data, type) {
             promise = axios({
                 method: 'get',
                 url: url,
-                data: data,
+                params: data,
                 headers: { 'authorization': storageUtil.getToken('token') }
             })
         } else if (type === "POST") {
@@ -34,6 +34,8 @@ export default function ajax(url, data, type) {
                 data: data,
                 headers: { 'authorization': storageUtil.getToken('token') }
             })
+        } else {
+            promise = axios.post(url, data)
         }
 
         promise.then(response => {

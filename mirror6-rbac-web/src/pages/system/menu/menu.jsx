@@ -12,8 +12,6 @@ const Option = Select.Option;
 const { RangePicker } = DatePicker;
 class Menu extends Component {
 
-    // addChild = React.createRef();
-    // editChild = React.createRef();
     formRef = React.createRef();
 
     constructor() {
@@ -179,10 +177,6 @@ class Menu extends Component {
     //显示添加组件
     showAdd = () => {
         console.log(this.state);
-        // const current = this.addChild.current;
-        // if (null != current && undefined != current) {
-        //     current.addRef.current.resetFields();
-        // }
 
         this.setState({
             modalStatus: 'add',
@@ -197,21 +191,9 @@ class Menu extends Component {
             modalStatus: 'edit',
             modalIsVisible: true
         })
-        // const result = await reqUserGet(index);
-        // if (result.code === 200) {
-        //     //保存对象
+
         this.editData = data;
         console.log(this.editData + "123")
-        // this.setState({
-        //     data
-        // })
-        // } else {
-        //     notification.error({
-        //         duration: null,
-        //         message: '提示',
-        //         description: result.msg
-        //     })
-        // }
     }
 
     //添加验证
@@ -264,6 +246,9 @@ class Menu extends Component {
     editMenu = async (data) => {
         const result = await reqMenuEdit(data);
         if (result.code === 200) {
+            this.setState({
+                modalIsVisible: false
+            })
             notification.success({
                 duration: 2,
                 message: '提示',

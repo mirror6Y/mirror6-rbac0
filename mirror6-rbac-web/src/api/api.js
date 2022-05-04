@@ -1,8 +1,8 @@
 import ajax from './ajax'
 import jsonp from 'jsonp'
 
-//登录
-export const reqLogin = (data) => ajax('/api/login', data, 'POST');
+//登录 注意：加token会拦截
+export const reqLogin = (data) => ajax('/api/login', data, null);
 
 //天气
 export const reqWeather = (cityCode) => {
