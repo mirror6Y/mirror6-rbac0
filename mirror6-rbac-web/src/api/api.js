@@ -10,8 +10,8 @@ export const reqWeather = (cityCode) => {
         const url = `https://restapi.amap.com/v3/weather/weatherInfo?city=${cityCode}&key=5b7a9d03558f93310350bc0849f3488f`;
         jsonp(url, {}, (error, data) => {
             if (!error && data.status === "1" && data.lives.length > 0) {
-                const { weather, reporttime } = data.lives[0];
-                resolve({ weather, reporttime })
+                const {weather, reporttime} = data.lives[0];
+                resolve({weather, reporttime})
             } else {
                 console.log("获取天气信息失败")
             }
@@ -34,10 +34,10 @@ export const reqUserDelete = (data) => ajax('/api/rbac/systemUser', data, 'DELET
 export const reqUserEdit = (data) => ajax('/api/rbac/systemUser', data, 'PUT')
 
 //编辑用户状态
-export const reqUserStatusEdit = (data) => ajax('/api/system/user/updateStatus', data, 'PUT')
+export const reqUserStatusEdit = (data) => ajax('/api/rbac/user/updateStatus', data, 'PUT')
 
 //查询用户信息
-export const reqUserGet = (data) => ajax('/api/system/user/getUser/' + data, null, 'GET')
+export const reqUserGet = (data) => ajax('/api/rbac/user/getUser/' + data, null, 'GET')
 
 
 //--------------------------角色模块--------------------------------------------
@@ -51,6 +51,29 @@ export const reqRoleTree = () => ajax('/api/rbac/systemRole/getTree', null, 'GET
 //添加
 export const reqRoleAdd = (data) => ajax('/api/rbac/systemRole', data, 'POST')
 
+//删除
+export const reqRoleDelete = (data) => ajax('/api/rbac/systemRole', data, 'DELETE')
+
+//编辑
+export const reqRoleEdit = (data) => ajax('/api/rbac/systemRole', data, 'PUT')
+
+
+//--------------------------权限模块--------------------------------------------
+
+// 菜单列表
+export const reqAuthList = (data) => ajax('/api/rbac/systemAuthority', data, 'GET')
+
+// 菜单树
+export const reqAuthTree = () => ajax('/api/rbac/systemAuthority/getTree', null, 'GET')
+
+//添加
+export const reqAuthAdd = (data) => ajax('/api/rbac/systemAuthority', data, 'POST')
+
+//删除
+export const reqAuthDelete = (data) => ajax('/api/rbac/systemAuthority', data, 'DELETE')
+
+//编辑
+export const reqAuthEdit = (data) => ajax('/api/rbac/systemAuthority', data, 'PUT')
 
 //--------------------------菜单模块--------------------------------------------
 

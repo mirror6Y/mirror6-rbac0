@@ -12,18 +12,23 @@ import cn.mirror6.rbac.center.service.ISystemRoleService;
 import cn.mirror6.rbac.center.service.ISystemUserRoleService;
 import cn.mirror6.rbac.constant.Constant;
 import cn.mirror6.rbac.constant.ResponseConstant;
+import cn.mirror6.rbac.exception.CommonErrorCode;
+import cn.mirror6.rbac.exception.CommonException;
 import cn.mirror6.rbac.response.ResponseFactory;
 import cn.mirror6.rbac.response.Result;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.google.common.collect.Lists;
 import org.apache.dubbo.common.utils.ArrayUtils;
 import org.apache.dubbo.common.utils.CollectionUtils;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -36,13 +41,13 @@ import java.util.*;
 @DubboService
 public class SystemRoleServiceApiImpl implements ISystemRoleServiceApi {
 
-    @Autowired
+    @Resource
     private ISystemRoleService roleService;
 
-    @Autowired
+    @Resource
     private ISystemRoleAuthorityService roleAuthorityService;
 
-    @Autowired
+    @Resource
     private ISystemUserRoleService userRoleService;
 
     @Override
@@ -61,6 +66,10 @@ public class SystemRoleServiceApiImpl implements ISystemRoleServiceApi {
         List<Long> list = Arrays.asList(ids);
         if (CollectionUtils.isEmpty(list)) {
             return ResponseFactory.build(ResponseConstant.COLLECTION_IS_EMPTY_CODE, ResponseConstant.COLLECTION_IS_EMPTY_MSG);
+        }
+        List<Long> collect = list.stream().filter(o -> o.equals(1L)).collect(Collectors.toList());
+        if (Lists.newArrayList(1L).equals(collect)) {
+            return ResponseFactory.build(ResponseConstant.COLLECTION_IS_EMPTY_CODE, "超级管理员无法删除");
         }
         QueryWrapper<SystemUserRole> wrapper = new QueryWrapper<>();
         wrapper.in("role_id", list);
@@ -84,19 +93,26 @@ public class SystemRoleServiceApiImpl implements ISystemRoleServiceApi {
     }
 
     @Override
-    public Result pageSystemRole(SystemRoleQuery systemRoleQuery) {
+    public Result pageSystemRole(SystemRoleQuery query) {
         QueryWrapper<SystemRole> wrapper = new QueryWrapper<>();
-        if (Objects.nonNull(systemRoleQuery.getName())) {
-            wrapper.like("name", systemRoleQuery.getName());
+        if (Objects.nonNull(query.getName())) {
+            wrapper.like("name", query.getName());
         }
-        if (Objects.nonNull(systemRoleQuery.getDescription())) {
-            wrapper.like("description", systemRoleQuery.getDescription());
+        if (Objects.nonNull(query.getDescription())) {
+            wrapper.like("description", query.getDescription());
         }
-        if (Objects.nonNull(systemRoleQuery.getIsEnabled())) {
-            wrapper.eq("is_enabled", systemRoleQuery.getIsEnabled());
+        if (Objects.nonNull(query.getEnabled())) {
+            wrapper.eq("is_enabled", query.getEnabled());
         }
-        Page<SystemRole> page = new Page<>(Optional.ofNullable(systemRoleQuery.getPageNum()).orElse(Constant.INIT_PAGE_NUM),
-                Optional.ofNullable(systemRoleQuery.getPageSize()).orElse(Constant.INIT_PAGE_SIZE));
+        if (Objects.nonNull(query.getStartTime()) && Objects.nonNull(query.getEndTime())) {
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String format = sdf.format(date);
+            wrapper.ge(query.getStartTime().toString(), format);
+            wrapper.le(query.getEndTime().toString(), format);
+        }
+        Page<SystemRole> page = new Page<>(Optional.ofNullable(query.getPageNum()).orElse(Constant.INIT_PAGE_NUM),
+                Optional.ofNullable(query.getPageSize()).orElse(Constant.INIT_PAGE_SIZE));
         return ResponseFactory.build(roleService.page(page, wrapper));
     }
 
@@ -128,7 +144,8 @@ public class SystemRoleServiceApiImpl implements ISystemRoleServiceApi {
 
     private List<SystemRoleAuthority> buildSystemRoleAuthority(Long[] authIds, Long roleId) {
         if (ArrayUtils.isEmpty(authIds)) {
-            ResponseFactory.build(ResponseConstant.ARRAY_IS_EMPTY_CODE, ResponseConstant.ARRAY_IS_EMPTY_MSG);
+//            throw new CommonException(CommonErrorCode.ARRAY_IS_EMPTY);
+            return new ArrayList<>();
         }
         List<SystemRoleAuthority> list = new ArrayList<>();
         for (Long authId : authIds) {

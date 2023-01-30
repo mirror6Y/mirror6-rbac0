@@ -5,12 +5,20 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author mirror6
  * @since 2021-03-21
  */
 public interface ISystemUserService extends IService<SystemUser> {
+
+    Long addUser(SystemUser systemUser);
+
+    boolean removeUser();
+
+    boolean editUser();
+
+    SystemUser getUserById();
 
 }

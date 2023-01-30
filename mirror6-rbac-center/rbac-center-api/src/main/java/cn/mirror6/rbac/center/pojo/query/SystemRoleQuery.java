@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class SystemRoleQuery extends BaseQuery{
+public class SystemRoleQuery extends BaseQuery {
 
     /**
      * 名称
@@ -25,5 +25,15 @@ public class SystemRoleQuery extends BaseQuery{
     /**
      * 启用状态
      */
-    private Integer isEnabled;
+    private Integer enabled;
+
+    /**
+     * 开始时间
+     */
+    private Long startTime;
+
+    /**
+     * 结束时间
+     */
+    private Long endTime;
 }

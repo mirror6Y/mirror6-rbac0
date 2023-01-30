@@ -15,7 +15,7 @@ public class Constant {
     /**
      * 分页 默认页面大小
      */
-    public static final Integer INIT_PAGE_SIZE = 15;
+    public static final Integer INIT_PAGE_SIZE = 20;
 
     /**
      * 菜单、权限数的根节点

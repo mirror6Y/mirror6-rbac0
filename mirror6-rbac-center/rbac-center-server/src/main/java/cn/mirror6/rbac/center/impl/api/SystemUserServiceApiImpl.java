@@ -6,15 +6,21 @@ import cn.mirror6.rbac.center.pojo.dto.SystemUserDto;
 import cn.mirror6.rbac.center.pojo.entity.SystemUser;
 import cn.mirror6.rbac.center.pojo.entity.SystemUserRole;
 import cn.mirror6.rbac.center.pojo.query.SystemUserQuery;
+import cn.mirror6.rbac.center.pojo.vo.SystemUserVO;
 import cn.mirror6.rbac.center.service.ISystemUserRoleService;
 import cn.mirror6.rbac.center.service.ISystemUserService;
 import cn.mirror6.rbac.constant.Constant;
 import cn.mirror6.rbac.constant.ResponseConstant;
 import cn.mirror6.rbac.constant.UserConstant;
+import cn.mirror6.rbac.exception.CommonErrorCode;
+import cn.mirror6.rbac.exception.CommonException;
 import cn.mirror6.rbac.response.ResponseFactory;
 import cn.mirror6.rbac.response.Result;
+//import cn.mirror6.rbac.util.SimplePageInfo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.common.utils.ArrayUtils;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.zookeeper.util.SecurityUtils;
@@ -24,7 +30,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -37,10 +46,10 @@ import java.util.*;
 @DubboService
 public class SystemUserServiceApiImpl implements ISystemUserServiceApi {
 
-    @Autowired
+    @Resource
     private ISystemUserService userService;
 
-    @Autowired
+    @Resource
     private ISystemUserRoleService userRoleService;
 
     @Override
@@ -68,23 +77,29 @@ public class SystemUserServiceApiImpl implements ISystemUserServiceApi {
 //            user.setCreator(1L);
             userService.save(user);
             List<SystemUserRole> list = buildSystemUserRole(systemUserDto.getRoleIds(), user.getId());
-            return ResponseFactory.build(list);
+            if (CollectionUtils.isNotEmpty(list)) {
+                userRoleService.saveBatch(list);
+            }
+            return ResponseFactory.build(user.getId());
         }
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Result deleteBatchSystemUser(Long[] ids) {
+        QueryWrapper<SystemUserRole> wrapper = new QueryWrapper<>();
+        userRoleService.remove(wrapper.in("user_id", ids));
         return ResponseFactory.build(userService.removeByIds(Arrays.asList(ids)));
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Result editSystemUser(SystemUserDto systemUserDto) {
-        Long[] roleIds = systemUserDto.getRoleIds();
-        if (ArrayUtils.isNotEmpty(roleIds)) {
-            QueryWrapper<SystemUserRole> wrapper = new QueryWrapper<>();
-            wrapper.eq("user_id", systemUserDto.getId());
-            userRoleService.remove(wrapper);
+        QueryWrapper<SystemUserRole> wrapper = new QueryWrapper<>();
+        userRoleService.remove(wrapper.eq("user_id", systemUserDto.getId()));
+        List<SystemUserRole> list = buildSystemUserRole(systemUserDto.getRoleIds(), systemUserDto.getId());
+        if (CollectionUtils.isNotEmpty(list)) {
+            userRoleService.saveBatch(list);
         }
         SystemUser user = new SystemUser();
         BeanUtils.copyProperties(systemUserDto, user);
@@ -92,26 +107,62 @@ public class SystemUserServiceApiImpl implements ISystemUserServiceApi {
     }
 
     @Override
+    public Result editSystemUserStatus(Long id) {
+        SystemUser systemUser = userService.getById(id);
+        if (Objects.isNull(systemUser)) {
+            return ResponseFactory.build("用户不存在");
+        }
+        SystemUser user = new SystemUser();
+        user.setId(id);
+        user.setEnabled(!systemUser.getEnabled());
+        userService.updateById(user);
+        return ResponseFactory.build(user);
+    }
+
+    @Override
     public Result pageSystemUser(SystemUserQuery query) {
         QueryWrapper<SystemUser> wrapper = new QueryWrapper<>();
-        if (Objects.nonNull(query.getAccount())) {
+        if (StringUtils.isNotBlank(query.getAccount())) {
             wrapper.like("account", query.getAccount());
         }
-        if (Objects.nonNull(query.getName())) {
+        if (StringUtils.isNotBlank(query.getName())) {
+            System.out.println("name不是空");
             wrapper.like("name", query.getName());
         }
-        if (Objects.nonNull(query.getTel())) {
+        if (StringUtils.isNotBlank(query.getTel())) {
             wrapper.like("tel", query.getTel());
         }
-        if (Objects.nonNull(query.getEmail())) {
+        if (StringUtils.isNotBlank(query.getEmail())) {
             wrapper.like("email", query.getEmail());
         }
-        if (Objects.nonNull(query.getIsEnabled())) {
-            wrapper.eq("is_enabled", query.getIsEnabled());
+        if (Objects.nonNull(query.getEnabled())) {
+            wrapper.eq("is_enabled", query.getEnabled());
+        }
+        if (Objects.nonNull(query.getStartTime()) && Objects.nonNull(query.getEndTime())) {
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String format = sdf.format(date);
+            wrapper.ge(query.getStartTime().toString(), format);
+            wrapper.le(query.getEndTime().toString(), format);
         }
         Page<SystemUser> page = new Page<>(Optional.ofNullable(query.getPageNum()).orElse(Constant.INIT_PAGE_NUM),
                 Optional.ofNullable(query.getPageSize()).orElse(Constant.INIT_PAGE_SIZE));
-        return ResponseFactory.build(userService.page(page, wrapper));
+        List<SystemUser> userList = userService.page(page, wrapper).getRecords();
+        List<Long> ids = userList.stream().map(SystemUser::getId).collect(Collectors.toList());
+        QueryWrapper<SystemUserRole> relationWrapper = new QueryWrapper<>();
+        List<SystemUserRole> userRoleList = userRoleService.list(relationWrapper.in("user_id", ids));
+
+        List<SystemUserVO> voList = new ArrayList<>();
+        userList.forEach(systemUser -> {
+            SystemUserVO systemUserVO = new SystemUserVO();
+            BeanUtils.copyProperties(systemUser, systemUserVO);
+            //todo
+            List<Long> roleIds = userRoleList.stream().filter(o -> o.getUserId().equals(systemUser.getId())).map(SystemUserRole::getRoleId).collect(Collectors.toList());
+            systemUserVO.setRoleIds(roleIds.toArray(new Long[0]));
+            voList.add(systemUserVO);
+        });
+//        return ResponseFactory.build(new SimplePageInfo<>(voList));
+        return ResponseFactory.build(voList);
     }
 
     @Override
@@ -134,10 +185,10 @@ public class SystemUserServiceApiImpl implements ISystemUserServiceApi {
 
 
     private List<SystemUserRole> buildSystemUserRole(Long[] roleIds, Long userId) {
-        if (ArrayUtils.isEmpty(roleIds)) {
-            ResponseFactory.build(ResponseConstant.ARRAY_IS_EMPTY_CODE, ResponseConstant.ARRAY_IS_EMPTY_MSG);
-        }
         List<SystemUserRole> list = new ArrayList<>();
+        if (ArrayUtils.isEmpty(roleIds)) {
+            throw new CommonException(CommonErrorCode.ARRAY_IS_EMPTY);
+        }
         for (Long roleId : roleIds) {
             SystemUserRole systemUserRole = SystemUserRole.builder().roleId(roleId).userId(userId).build();
             list.add(systemUserRole);

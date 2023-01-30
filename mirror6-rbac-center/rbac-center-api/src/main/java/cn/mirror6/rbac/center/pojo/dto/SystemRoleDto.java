@@ -20,7 +20,7 @@ public class SystemRoleDto implements Serializable {
     /**
      * 父ID
      */
-    private Long parentId;
+    private Long parentId = 0L;
 
     /**
      * 名称
@@ -36,6 +36,11 @@ public class SystemRoleDto implements Serializable {
      * 排序码
      */
     private Integer sort;
+
+    /**
+     * 启用状态
+     */
+    private Boolean enabled;
 
     /**
      * 权限数组

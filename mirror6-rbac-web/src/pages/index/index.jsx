@@ -7,7 +7,7 @@ import Header from '../../components/header/header'
 import Home from '../home/home'
 import User from '../system/user/user'
 import Role from '../system/role/role'
-import Menu from '../system/menu/menu'
+import Auth from '../system/auth/auth'
 import PrivateRoute from '../../config/privateRoute'
 
 
@@ -28,11 +28,11 @@ class index extends Component {
                     <Header >Header</Header>
                     <Content style={{ margin:20,backgroundColor: '#fff' }}>
                         <Switch>
-                            <Route path="/home" component={Home}></Route>
-                            <Route path="/system/user" component={User}></Route>
-                            <PrivateRoute path="/system/role" component={Role}></PrivateRoute>
-                            <Route path="/system/menu" component={Menu}></Route>
-                            <Redirect to='/home'></Redirect>
+                            <Route path="/home" component={Home}/>
+                            <Route path="/system/user" component={User}/>
+                            <PrivateRoute path="/system/role" component={Role}/>
+                            <Route path="/system/auth" component={Auth}/>
+                            <Redirect to='/home'/>
                         </Switch>
                     </Content>
                     <Footer style={{ textAlign: "center" }}>Footer</Footer>

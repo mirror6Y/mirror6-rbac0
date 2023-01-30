@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9986325a-d6d0-4a94-9bf6-60e3dbff9178" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../mirror6-rbac-common/src/main/java/cn/mirror6/rbac/util/SimplePageInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../db/rbac.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../db/rbac.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/mirror6/rbac/center/api/ISystemUserServiceApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/mirror6/rbac/center/api/ISystemUserServiceApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/mirror6/rbac/center/pojo/dto/SystemUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/mirror6/rbac/center/pojo/dto/SystemUserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/mirror6/rbac/center/pojo/entity/SystemUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/mirror6/rbac/center/pojo/entity/SystemUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/mirror6/rbac/center/pojo/query/SystemUserQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/mirror6/rbac/center/pojo/query/SystemUserQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/mirror6/rbac/center/pojo/vo/SystemUserVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/mirror6/rbac/center/pojo/vo/SystemUserVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/mirror6/rbac/center/service/ISystemUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/mirror6/rbac/center/service/ISystemUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rbac-center-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../rbac-center-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rbac-center-server/src/main/java/cn/mirror6/rbac/center/impl/api/SystemUserServiceApiImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../rbac-center-server/src/main/java/cn/mirror6/rbac/center/impl/api/SystemUserServiceApiImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rbac-center-server/src/main/java/cn/mirror6/rbac/center/impl/service/SystemUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../rbac-center-server/src/main/java/cn/mirror6/rbac/center/impl/service/SystemUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rbac-center-server/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../rbac-center-server/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-common/src/main/java/cn/mirror6/rbac/constant/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-common/src/main/java/cn/mirror6/rbac/constant/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/component/SystemLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/component/SystemLoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/controller/SystemAuthorityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/controller/SystemAuthorityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/controller/SystemLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/controller/SystemLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/controller/SystemMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/controller/SystemMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/controller/SystemRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/controller/SystemRoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/controller/SystemUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/controller/SystemUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/security/LoginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/security/LoginUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/security/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/security/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/security/filter/JwtAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/security/filter/JwtAuthorizationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/util/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/java/cn/mirror6/rbac/server/util/JwtTokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-server/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-web/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-web/src/api/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-web/src/pages/system/user/user.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-web/src/pages/system/user/user.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mirror6-rbac-web/src/pages/system/user/userModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../mirror6-rbac-web/src/pages/system/user/userModal.jsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2KH7wBkO8jPo8jLQomU8Ats1GUm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9986325a-d6d0-4a94-9bf6-60e3dbff9178" name="Default Changelist" comment="" />
+      <created>1673619890931</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673619890931</updated>
+      <workItem from="1673619892265" duration="10000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -20,6 +20,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.*;
 
 /**
@@ -33,10 +34,10 @@ import java.util.*;
 @DubboService
 public class SystemAuthorityServiceApiImpl implements ISystemAuthorityServiceApi {
 
-    @Autowired
+    @Resource
     private ISystemAuthorityService authorityService;
 
-    @Autowired
+    @Resource
     private ISystemRoleAuthorityService roleAuthorityService;
 
 
@@ -72,10 +73,10 @@ public class SystemAuthorityServiceApiImpl implements ISystemAuthorityServiceApi
     public Result pageSystemAuthority(SystemAuthorityQuery systemAuthorityQuery) {
         QueryWrapper<SystemAuthority> wrapper = new QueryWrapper<>();
         if (Objects.nonNull(systemAuthorityQuery.getName())) {
-            wrapper.like("title", systemAuthorityQuery.getName());
+            wrapper.like("name", systemAuthorityQuery.getName());
         }
-        if (Objects.nonNull(systemAuthorityQuery.getDescription())) {
-            wrapper.like("description", systemAuthorityQuery.getDescription());
+        if (Objects.nonNull(systemAuthorityQuery.getMark())) {
+            wrapper.like("mark", systemAuthorityQuery.getMark());
         }
         if (Objects.nonNull(systemAuthorityQuery.getIsEnabled())) {
             wrapper.eq("is_enabled", systemAuthorityQuery.getIsEnabled());

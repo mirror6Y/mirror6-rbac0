@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author mirror6
@@ -25,7 +25,7 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 public class SystemRole extends Model<SystemRole> {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @TableId(type = IdType.AUTO)
     private Long id;
@@ -54,7 +54,7 @@ public class SystemRole extends Model<SystemRole> {
      * 启用状态
      */
     @TableField(value = "is_enabled")
-    private Integer enabled;
+    private Boolean enabled;
 
     /**
      * 创建者
@@ -82,7 +82,7 @@ public class SystemRole extends Model<SystemRole> {
      * 逻辑删除
      */
     @TableField(value = "is_deleted")
-    private Integer deleted;
+    private Boolean deleted;
 
 
     @Override

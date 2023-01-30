@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mirror6-rbac-server" />
+        <module name="rbac-center-api" />
+        <module name="mirror6-rbac-common" />
+        <module name="base" />
+        <module name="rbac-center-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ai-crm" target="1.8" />
+      <module name="ai-crm-api" target="1.5" />
+      <module name="ai-crm-config" target="1.5" />
+      <module name="ai-crm-dal" target="1.5" />
+      <module name="ai-crm-dependency" target="1.5" />
+      <module name="ai-crm-deploy" target="1.5" />
+      <module name="ai-crm-domain" target="1.5" />
+      <module name="ai-crm-facade" target="1.5" />
+      <module name="ai-crm-web" target="1.5" />
+      <module name="base" target="8" />
+      <module name="business-card" target="1.8" />
+      <module name="business-card-api" target="1.5" />
+      <module name="business-card-biz" target="1.5" />
+      <module name="business-card-config" target="1.5" />
+      <module name="business-card-dal" target="1.5" />
+      <module name="business-card-deploy" target="1.5" />
+      <module name="business-card-web" target="1.5" />
+      <module name="by-wechat-work" target="1.8" />
+      <module name="by-wechat-work-api" target="1.5" />
+      <module name="by-wechat-work-common" target="1.5" />
+      <module name="by-wechat-work-config" target="1.5" />
+      <module name="by-wechat-work-core" target="1.5" />
+      <module name="by-wechat-work-dal" target="1.5" />
+      <module name="by-wechat-work-dependency" target="1.5" />
+      <module name="by-wechat-work-deploy" target="1.5" />
+      <module name="by-wechat-work-web" target="1.5" />
+      <module name="link-center" target="1.8" />
+      <module name="link-center-api" target="1.5" />
+      <module name="link-center-config" target="1.5" />
+      <module name="link-center-core" target="1.5" />
+      <module name="link-center-dal" target="1.5" />
+      <module name="link-center-dependency" target="1.5" />
+      <module name="link-center-deploy" target="1.5" />
+      <module name="link-center-web" target="1.5" />
+      <module name="mirror6-rbac-center" target="1.8" />
+      <module name="mirror6-rbac-common" target="1.8" />
+      <module name="mirror6-rbac-server" target="1.8" />
+      <module name="rbac-center-api" target="8" />
+      <module name="rbac-center-server" target="1.8" />
+      <module name="short-url" target="1.8" />
+      <module name="short-url-api" target="1.5" />
+      <module name="short-url-config" target="1.5" />
+      <module name="short-url-core" target="1.5" />
+      <module name="short-url-dal" target="1.5" />
+      <module name="short-url-dependency" target="1.5" />
+      <module name="short-url-deploy" target="1.5" />
+      <module name="short-url-web" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="base" options="" />
+      <module name="mirror6-rbac-common" options="-parameters" />
+      <module name="mirror6-rbac-server" options="-parameters" />
+      <module name="rbac-center-api" options="-parameters" />
+      <module name="rbac-center-server" options="-parameters" />
+    </option>
+  </component>
+</project>

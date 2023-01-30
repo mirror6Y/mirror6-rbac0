@@ -26,7 +26,7 @@ public class SystemUser extends Model<SystemUser> {
 
     private static final long serialVersionUID=1L;
 
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
@@ -68,7 +68,7 @@ public class SystemUser extends Model<SystemUser> {
      * 启用状态
      */
     @TableField(value = "is_enabled")
-    private Integer enabled;
+    private Boolean enabled;
 
     /**
      * 创建者
@@ -96,8 +96,7 @@ public class SystemUser extends Model<SystemUser> {
      * 逻辑删除
      */
     @TableField(value = "is_deleted")
-    private Integer deleted;
-
+    private Boolean deleted;
 
     @Override
     protected Serializable pkVal() {

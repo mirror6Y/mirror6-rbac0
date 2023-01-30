@@ -48,6 +48,11 @@ public class SystemUserDto implements Serializable {
     private String email;
 
     /**
+     * 启用状态
+     */
+    private Boolean enabled;
+
+    /**
      * 角色数组
      */
     private Long[] roleIds;

@@ -35,15 +35,15 @@ public class SystemUserQuery extends BaseQuery {
     /**
      * 启用状态
      */
-    private Integer isEnabled;
+    private Integer enabled;
 
     /**
      * 开始时间
      */
-    private String startTime;
+    private Long startTime;
 
     /**
      * 结束时间
      */
-    private String endTime;
+    private Long endTime;
 }

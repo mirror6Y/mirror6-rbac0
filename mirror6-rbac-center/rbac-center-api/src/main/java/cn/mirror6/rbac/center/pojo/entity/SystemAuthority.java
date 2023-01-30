@@ -52,6 +52,11 @@ public class SystemAuthority extends Model<SystemAuthority> {
     private String description;
 
     /**
+     * 类型 0:菜单权限；1:操作权限；2:数据权限
+     */
+    private Integer type;
+
+    /**
      * 菜单ID
      */
     private Long menuId;
@@ -65,7 +70,7 @@ public class SystemAuthority extends Model<SystemAuthority> {
      * 启用状态
      */
     @TableField(value = "is_enabled")
-    private Integer enabled;
+    private Boolean enabled;
 
     /**
      * 创建者
@@ -93,7 +98,7 @@ public class SystemAuthority extends Model<SystemAuthority> {
      * 逻辑删除
      */
     @TableField(value = "is_deleted")
-    private Integer deleted;
+    private Boolean deleted;
 
 
     @Override

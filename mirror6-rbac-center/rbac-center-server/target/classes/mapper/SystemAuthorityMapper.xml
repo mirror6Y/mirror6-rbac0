@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mirror6.rbac.center.mapper.SystemAuthorityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.mirror6.rbac.center.pojo.entity.SystemAuthority">
+        <id column="id" property="id"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="name" property="name"/>
+        <result column="mark" property="mark"/>
+        <result column="description" property="description"/>
+        <result column="menu_id" property="menuId"/>
+        <result column="sort" property="sort"/>
+        <result column="is_enabled" property="isEnabled"/>
+        <result column="creator" property="creator"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="updater" property="updater"/>
+        <result column="gmt_modified" property="gmtModified"/>
+        <result column="is_deleted" property="isDeleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, parent_id, name, mark, description, menu_id, sort, is_enabled, creator, gmt_create, updater, gmt_modified, is_deleted
+    </sql>
+
+    <select id="getAuthorityMarkByUserId" parameterType="Long" resultType="String">
+        SELECT DISTINCT
+            ( au.mark )
+        FROM
+            system_authority au
+            LEFT JOIN system_role_authority ra ON ra.auth_id = au.id
+            LEFT JOIN system_role ro ON ro.id = ra.role_id
+            LEFT JOIN system_user_role ur ON ur.role_id = ro.id
+        WHERE
+            au.is_enabled = 1
+            AND ro.is_enabled = 1
+            AND ur.user_id = #{userId}
+	</select>
+
+</mapper>

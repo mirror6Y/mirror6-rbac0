@@ -12,10 +12,12 @@ import java.io.Serializable;
 @Data
 public class SystemAuthorityDto implements Serializable {
 
+    private Long id;
+
     /**
      * 父ID
      */
-    private Long parentId;
+    private Long parentId = 0L;
 
     /**
      * 名称
@@ -33,6 +35,11 @@ public class SystemAuthorityDto implements Serializable {
     private String description;
 
     /**
+     * 类型
+     */
+    private Integer type;
+
+    /**
      * 菜单ID
      */
     private Long menuId;
@@ -41,5 +48,10 @@ public class SystemAuthorityDto implements Serializable {
      * 排序码
      */
     private Integer sort;
+
+    /**
+     * 启用状态
+     */
+    private Boolean enabled;
 
 }

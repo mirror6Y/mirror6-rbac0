@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../JavaBase/base.iml" filepath="$PROJECT_DIR$/../JavaBase/base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mirror6-rbac-center/mirror6-rbac-center.iml" filepath="$PROJECT_DIR$/mirror6-rbac-center/mirror6-rbac-center.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mirror6-rbac-common/mirror6-rbac-common.iml" filepath="$PROJECT_DIR$/mirror6-rbac-common/mirror6-rbac-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mirror6-rbac-server/mirror6-rbac-server.iml" filepath="$PROJECT_DIR$/mirror6-rbac-server/mirror6-rbac-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mirror6-rbac-web/mirror6-rbac-web.iml" filepath="$PROJECT_DIR$/mirror6-rbac-web/mirror6-rbac-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mirror6-rbac-center/rbac-center-api/rbac-center-api.iml" filepath="$PROJECT_DIR$/mirror6-rbac-center/rbac-center-api/rbac-center-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mirror6-rbac-center/rbac-center-server/rbac-center-server.iml" filepath="$PROJECT_DIR$/mirror6-rbac-center/rbac-center-server/rbac-center-server.iml" />
+    </modules>
+  </component>
+</project>

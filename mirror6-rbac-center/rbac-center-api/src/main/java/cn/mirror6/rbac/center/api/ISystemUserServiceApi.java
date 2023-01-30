@@ -40,6 +40,14 @@ public interface ISystemUserServiceApi {
     Result editSystemUser(SystemUserDto systemUserDto);
 
     /**
+     * 编辑状态
+     *
+     * @param id id
+     * @return res
+     */
+    Result editSystemUserStatus(Long id);
+
+    /**
      * 列表
      *
      * @param systemUserQuery query

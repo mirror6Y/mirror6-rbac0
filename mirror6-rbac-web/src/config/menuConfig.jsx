@@ -34,9 +34,9 @@ const menuList = [
                 icon: <TeamOutlined />
             },
             {
-                title: "菜单管理",
-                key: "/system/menu",
-                url: "/system/menu",
+                title: "权限管理",
+                key: "/system/auth",
+                url: "/system/auth",
                 icon: <TeamOutlined />
             }
         ]

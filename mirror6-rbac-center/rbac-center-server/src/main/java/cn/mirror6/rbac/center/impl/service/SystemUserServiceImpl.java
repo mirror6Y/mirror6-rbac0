@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author mirror6
@@ -18,4 +18,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemUser> implements ISystemUserService {
 
+    @Override
+    public Long addUser(SystemUser systemUser) {
+        baseMapper.insert(systemUser);
+        return systemUser.getId();
+    }
+
+    @Override
+    public boolean removeUser() {
+        return false;
+    }
+
+    @Override
+    public boolean editUser() {
+        return false;
+    }
+
+    @Override
+    public SystemUser getUserById() {
+        return null;
+    }
 }

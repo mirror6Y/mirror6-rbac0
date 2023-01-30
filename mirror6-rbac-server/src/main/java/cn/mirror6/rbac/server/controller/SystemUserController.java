@@ -7,7 +7,7 @@ import cn.mirror6.rbac.center.pojo.query.SystemUserQuery;
 import cn.mirror6.rbac.response.Result;
 import com.alibaba.fastjson.JSON;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,26 +28,31 @@ public class SystemUserController {
     private ISystemUserServiceApi userServiceApi;
 
     @PostMapping
-    @PreAuthorize("hasAnyAuthority('sys','sys:user','sys:user:operate')")
+//    @PreAuthorize("hasAnyAuthority('sys','sys:user','sys:user:operate')")
     public Result add(@RequestBody SystemUserDto dto) {
         return userServiceApi.createSystemUser(dto);
     }
 
     @DeleteMapping
-    @PreAuthorize("hasAnyAuthority('sys','sys:user','sys:user:operate')")
+//    @PreAuthorize("hasAnyAuthority('sys','sys:user','sys:user:operate')")
     public Result delete(@RequestBody String msg) {
         List<Long> ids = JSON.parseArray(msg, Long.class);
         return userServiceApi.deleteBatchSystemUser(ids.toArray(new Long[0]));
     }
 
     @PutMapping
-    @PreAuthorize("hasAnyAuthority('sys','sys:user','sys:user:operate')")
+//    @PreAuthorize("hasAnyAuthority('sys','sys:user','sys:user:operate')")
     public Result update(@RequestBody SystemUserDto dto) {
         return userServiceApi.editSystemUser(dto);
     }
 
+    @PutMapping("updateStatus")
+    public Result updateStatus(@RequestBody Long id) {
+        return userServiceApi.editSystemUserStatus(id);
+    }
+
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('sys','sys:user','sys:user:view')")
+//    @PreAuthorize("hasAnyAuthority('sys','sys:user','sys:user:view')")
     public Result page(SystemUserQuery query) {
         return userServiceApi.pageSystemUser(query);
     }

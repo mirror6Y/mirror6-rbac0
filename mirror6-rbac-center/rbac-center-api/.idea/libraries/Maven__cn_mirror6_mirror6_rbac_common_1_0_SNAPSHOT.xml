@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.mirror6:mirror6-rbac-common:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/mirror6/mirror6-rbac-common/1.0-SNAPSHOT/mirror6-rbac-common-1.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/mirror6/mirror6-rbac-common/1.0-SNAPSHOT/mirror6-rbac-common-1.0-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/mirror6/mirror6-rbac-common/1.0-SNAPSHOT/mirror6-rbac-common-1.0-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

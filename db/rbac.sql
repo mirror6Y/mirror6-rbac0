@@ -24,10 +24,10 @@ USE `rbac` ;
 -- Table `rbac`.`system_user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `rbac`.`system_user` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `account` VARCHAR(12) NOT NULL COMMENT '账号',
   `password` VARCHAR(128) NOT NULL COMMENT '密码',
-  `salt` VARCHAR(32) NOT NULL COMMENT '盐',
+  `salt` VARCHAR(64) NOT NULL COMMENT '盐',
   `name` VARCHAR(12) NOT NULL COMMENT '用户名称',
   `gender` INT NULL COMMENT '性别',
   `tel` VARCHAR(16) NULL COMMENT '手机号码',

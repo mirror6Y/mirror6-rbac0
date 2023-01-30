@@ -18,9 +18,9 @@ public class SystemAuthorityQuery extends BaseQuery{
     private String name;
 
     /**
-     * 描述
+     * 权限标识
      */
-    private String description;
+    private String mark;
 
     /**
      * 启用状态
