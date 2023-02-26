@@ -8,8 +8,10 @@ import cn.mirror6.rbac.response.Result;
 import com.alibaba.fastjson.JSON;
 import org.apache.dubbo.config.annotation.DubboReference;
 //import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -56,5 +58,6 @@ public class SystemUserController {
     public Result page(SystemUserQuery query) {
         return userServiceApi.pageSystemUser(query);
     }
+
 }
 

@@ -1,0 +1,12 @@
+
+
+/mirror6-rbac-common/target/
+/mirror6-rbac-center/.mvn
+/mirror6-rbac-center/rbac-center-api/target/
+/mirror6-rbac-center/rbac-center-server/target/
+/mirror6-rbac-server/target/
+/mirror6-rbac-web/node_modules/
+
+
+
+
